@@ -14,3 +14,11 @@ services:
     ports:
       - 7777:7777
     entrypoint: ["/bin/bash", "./scripts/entrypoint.dev.sh"]
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - '27017:27017'

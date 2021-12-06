@@ -1,7 +1,7 @@
 package post
 
 type Post struct {
-	Id   int
+	Id   string
 	Text string
 }
 

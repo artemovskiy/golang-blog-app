@@ -8,7 +8,6 @@ import (
 	"io"
 	"log"
 	"net/http"
-	"strconv"
 )
 
 type PostController struct {
@@ -18,12 +17,9 @@ type PostController struct {
 func (c *PostController) View(writer http.ResponseWriter, request *http.Request) {
 	pathParams := mux.Vars(request)
 
-	id, err := strconv.ParseInt(pathParams["id"], 10, 64)
-	if err != nil {
-		log.Fatal(err)
-	}
+	id := pathParams["id"]
 
-	post, err := c.PostService.Get(int(id))
+	post, err := c.PostService.Get(id)
 	if err != nil {
 		log.Fatal(err)
 	}
