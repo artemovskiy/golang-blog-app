@@ -1,0 +1,16 @@
+FROM golang:1.17
+
+WORKDIR /app
+
+# Fetch dependencies on separate layer as they are less likely to
+# change on every build and will therefore be cached for speeding
+# up the next build
+COPY ./go.mod ./
+RUN go mod download
+
+# copy source from the host to the working directory inside
+# the container
+COPY . .
+
+# This container exposes port 7777 to the outside world
+EXPOSE 7777
