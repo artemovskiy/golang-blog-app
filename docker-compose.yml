@@ -4,10 +4,6 @@ volumes:
   boilerplatevolume:
     name: boilerplate-volume
 
-networks:
-  boilerplatenetwork:
-    name: boilerplate-network
-
 services:
   boilerplate_api:
     build:
@@ -17,6 +13,4 @@ services:
       - ./:/app
     ports:
       - 7777:7777
-    networks:
-      - boilerplatenetwork
     entrypoint: ["/bin/bash", "./scripts/entrypoint.dev.sh"]
